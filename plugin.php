@@ -16,10 +16,10 @@ if (!defined('POSTS_PROCESSOR_PLUGIN_PATH')){
 
 class EntryPoint{
     static public function register(){
-        if (!is_admin()) {
-            // only load this stuff if the user is on the admin pages
-            return;
-        }
+        // if (!is_admin()) {
+        //     // only load this stuff if the user is on the admin pages
+        //     return;
+        // }
         
         BlocksRegister::registerBlocks();
     }

@@ -1,4 +1,8 @@
 import { registerBlockType } from '@wordpress/blocks';
+import { RichText } from '@wordpress/editor';
+import { Button, Text } from '@wordpress/components';
+
+// https://javascriptforwp.com/wordpress-scripts-build-tool-tutorial/
  
 const blockStyle = {
     backgroundColor: '#900',
@@ -9,12 +13,33 @@ const blockStyle = {
 registerBlockType( 'simple-brightcove/brightcove-block', {
     title: 'Brightcove Block',
     icon: 'universal-access-alt',
-    category: 'layout',
+    category: 'embed',
+    attributes: {
+        videoId: {
+            type: 'string',
+            attribute: 'video-id',
+        },
+        accountId: {
+            type: 'string',
+            attribute: 'account-id',
+        }
+    },
     example: {},
-    edit() {
-        return <div style={ blockStyle }>Hello World, step 1 (from the editor).</div>;
-    },
-    save() {
-        return <div style={ blockStyle }>Hello World, step 1 (from the frontend).</div>;
-    },
+    edit(props) {
+        const {attributes, className, setAttributes} = props;
+
+        return (
+            <div className={className}>
+                {/* <Text variant="body">Embed Brightcove Video</Text>
+                <Text variant="body">Enter the Brightcove VideoId or ReferenceId</Text> */}
+                <RichText
+                    value={attributes.videoId}
+                    onChange={value => setAttributes({ videoId: value })}
+                    tagName="input"
+                    placeholder="VideoId"
+                />
+                <Button isSecondary>Update</Button>
+            </div>
+        );
+    }
 } );
