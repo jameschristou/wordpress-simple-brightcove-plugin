@@ -1,14 +1,8 @@
 import { registerBlockType } from '@wordpress/blocks';
-import { RichText } from '@wordpress/editor';
-import { Button, Text } from '@wordpress/components';
+import BrightcoveEdit from './BrightcoveEdit';
+import BrightcovePreview from './BrightcovePreview';
 
 // https://javascriptforwp.com/wordpress-scripts-build-tool-tutorial/
- 
-const blockStyle = {
-    backgroundColor: '#900',
-    color: '#fff',
-    padding: '20px',
-};
  
 registerBlockType( 'simple-brightcove/brightcove-block', {
     title: 'Brightcove Block',
@@ -26,20 +20,17 @@ registerBlockType( 'simple-brightcove/brightcove-block', {
     },
     example: {},
     edit(props) {
-        const {attributes, className, setAttributes} = props;
+        const isEditingUrl = true;
+        const hasPreview = false;
+
+        if(isEditingUrl || !hasPreview){
+            return (
+                <BrightcoveEdit props={props}></BrightcoveEdit>
+            );
+        }
 
         return (
-            <div className={className}>
-                {/* <Text variant="body">Embed Brightcove Video</Text>
-                <Text variant="body">Enter the Brightcove VideoId or ReferenceId</Text> */}
-                <RichText
-                    value={attributes.videoId}
-                    onChange={value => setAttributes({ videoId: value })}
-                    tagName="input"
-                    placeholder="VideoId"
-                />
-                <Button isSecondary>Update</Button>
-            </div>
+            <BrightcovePreview props={props}></BrightcovePreview>
         );
     }
 } );
