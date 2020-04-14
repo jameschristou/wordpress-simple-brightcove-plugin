@@ -20,7 +20,7 @@ class BlocksRegister{
          // Block editor CSS
         wp_register_style(
             'simple-brightcove-blocks-css',
-            plugins_url( 'dist/blocks.editor.build.css', dirname( __FILE__ ) ),
+            plugins_url( 'dist/blocks.editor.build.css', __FILE__ ),
             array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
             SIMPLE_BRIGHTCOVE_VERSION
         );

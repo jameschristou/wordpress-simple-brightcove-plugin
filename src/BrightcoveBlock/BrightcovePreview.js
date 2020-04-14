@@ -17,13 +17,13 @@ const BrightcovePreview = ({props}) => {
   }, []);
 
   return (
-    <div className="brightcove__video-wrapper">
+    <div className="brightcove-preview">
       <video 
           data-video-id={`${attributes.videoId}`}
           data-account={`${accountId}`}
           data-player={`${playerId}`}
           data-embed="default"
-          className="video-js brightcove-video-embed"
+          className="video-js brightcove-preview__video"
           controls>
       </video>
     </div>

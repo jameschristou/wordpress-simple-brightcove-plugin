@@ -5,6 +5,8 @@ import BrightcovePreview from './BrightcovePreview';
 import { pencil } from '@wordpress/icons';
 import { BlockControls } from '@wordpress/block-editor';
 import { Button, ToolbarGroup } from '@wordpress/components';
+import './style.scss';
+import './editor.scss';
 
 // https://javascriptforwp.com/wordpress-scripts-build-tool-tutorial/
  
@@ -42,16 +44,16 @@ const BrightcoveBlock = ({props}) => {
   
     return (
         <Fragment>
-          <BlockControls>
-              <ToolbarGroup>
-                  <Button
+            <BlockControls>
+                <ToolbarGroup>
+                    <Button
                       className="components-toolbar__control"
                       label='Edit URL'
                       icon={ pencil }
                       onClick={ evnt => setIsEditingUrl(true) } />
-              </ToolbarGroup>
+                </ToolbarGroup>
             </BlockControls>
-          <BrightcovePreview props={props}></BrightcovePreview>
+            <BrightcovePreview props={props}></BrightcovePreview>
         </Fragment>
     );
 }
