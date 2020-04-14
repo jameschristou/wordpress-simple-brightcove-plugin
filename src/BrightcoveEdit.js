@@ -1,7 +1,9 @@
 import { Button, Placeholder } from '@wordpress/components';
+import { useState } from 'react';
 
 const BrightcoveEdit = ({props}) => {
   const {attributes, className, setAttributes} = props;
+  const [videoId, setVideoId] = useState(attributes.videoId);
 
   return (
     <Placeholder
@@ -9,14 +11,17 @@ const BrightcoveEdit = ({props}) => {
         className="wp-block-embed"
         instructions="Enter the Brightcove VideoId or ReferenceId"
     >
-      <form onSubmit={evnt => console.log('Submit brightcove video')}>
+      <form onSubmit={evnt => {
+        evnt.preventDefault();
+        setAttributes({videoId: videoId});
+        }}>
           <input
-              type="url"
-              value={ attributes.videoId || '' }
+              type="text"
+              value={ videoId || '' }
               className="components-placeholder__input"
               aria-label="Brightcove VideoId"
               placeholder="Enter the VideoId or ReferenceId here"
-              onChange={evnt => setAttributes({ videoId: evnt.target.value })}
+              onChange={evnt => setVideoId(evnt.target.value)}
           />
           <Button isSecondary type="submit">Embed</Button>
       </form>

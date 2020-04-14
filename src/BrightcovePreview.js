@@ -5,7 +5,7 @@ const BrightcovePreview = ({props}) => {
 
   const playerId = "default";
   const accountId = "674523943001";
-  const videoId = "6146437284001";
+  //const videoId = "6146437284001";
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -19,11 +19,11 @@ const BrightcovePreview = ({props}) => {
   return (
     <div className="brightcove__video-wrapper">
       <video 
-          data-video-id={`${videoId}`}
+          data-video-id={`${attributes.videoId}`}
           data-account={`${accountId}`}
           data-player={`${playerId}`}
           data-embed="default"
-          className="video-js inline-video"
+          className="video-js brightcove-video-embed"
           controls>
       </video>
     </div>

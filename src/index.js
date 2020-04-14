@@ -1,6 +1,5 @@
 import { registerBlockType } from '@wordpress/blocks';
-import BrightcoveEdit from './BrightcoveEdit';
-import BrightcovePreview from './BrightcovePreview';
+import BrightcoveBlock from './BrightcoveBlock';
 
 // https://javascriptforwp.com/wordpress-scripts-build-tool-tutorial/
  
@@ -20,17 +19,8 @@ registerBlockType( 'simple-brightcove/brightcove-block', {
     },
     example: {},
     edit(props) {
-        const isEditingUrl = true;
-        const hasPreview = false;
-
-        if(isEditingUrl || !hasPreview){
-            return (
-                <BrightcoveEdit props={props}></BrightcoveEdit>
-            );
-        }
-
         return (
-            <BrightcovePreview props={props}></BrightcovePreview>
+            <BrightcoveBlock props={props}></BrightcoveBlock>
         );
     }
 } );
