@@ -10,8 +10,19 @@ namespace simpleBrightcove;
 
 require_once 'BlocksRegister.php';
 
-if (!defined('POSTS_PROCESSOR_PLUGIN_PATH')){
-    define('POSTS_PROCESSOR_PLUGIN_PATH', plugin_dir_path(__FILE__));
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+if (!defined('SIMPLE_BRIGHTCOVE_PLUGIN_PATH')){
+    define('SIMPLE_BRIGHTCOVE_PLUGIN_PATH', plugin_dir_path(__FILE__));
+}
+
+// This constant should be set dynamically by the automated build when building and deploying the plugin.
+// It should always be in sync with the plugin version defined in the plugin comments
+if (!defined('SIMPLE_BRIGHTCOVE_VERSION')){
+    define('SIMPLE_BRIGHTCOVE_VERSION', "0.0.1");
 }
 
 class EntryPoint{

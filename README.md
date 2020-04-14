@@ -1,14 +1,25 @@
-## wordpress-simple-brightcove-plugin
-Wordpress plugin which gives you a simple block for embedding brightcove videos into your content. This is built using `@wordpress/scripts`.
+# wordpress-simple-brightcove-plugin
+Wordpress plugin which gives you a simple block for embedding brightcove videos into your content. This project was bootstrapped with [Create Guten Block](https://github.com/ahmadawais/create-guten-block).
 
 ## Plugin Usage
-Install the plugin (copy into your plugin folder) and then activate the plugin. A new block called 'Simple Brightcove Video' will become available.
+Install the plugin (copy into your plugin folder), create the production build and then activate the plugin. A new block called 'Simple Brightcove Video' will become available.
 
-## Front End Build
-Run `npm install` to install all packages and depenedencies.
+Below you will find some information on how to run scripts.
 
-### Dev
-To compile front end assets while developing use `npm run start`.
+>You can find the most recent version of this guide [here](https://github.com/ahmadawais/create-guten-block).
 
-### Production
-`npm run wp-build`
+## Development
+👉  `npm start`
+- Use to compile and run the block in development mode.
+- Watches for any changes and reports back any errors in your code.
+
+## Production
+👉  `npm run build`
+- Use to build production code for your block inside `dist` folder.
+- Runs once and reports back the gzip file sizes of the produced code.
+
+## 👉  `npm run eject`
+- Use to eject your plugin out of `create-guten-block`.
+- Provides all the configurations so you can customize the project as you want.
+- It's a one-way street, `eject` and you have to maintain everything yourself.
+- You don't normally have to `eject` a project because by ejecting you lose the connection with `create-guten-block` and from there onwards you have to update and maintain all the dependencies on your own.
