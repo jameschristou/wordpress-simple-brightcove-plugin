@@ -4,7 +4,7 @@ const BrightcovePreview = ({props}) => {
   const {attributes, className, setAttributes} = props;
 
   const playerId = "default";
-  const accountId = "674523943001";
+  const accountId = "674523943001"; // should switch this over to something configurable
   //const videoId = "6146437284001";
 
   useEffect(() => {

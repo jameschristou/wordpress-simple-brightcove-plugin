@@ -2,7 +2,7 @@ import { registerBlockType } from '@wordpress/blocks';
 import { Fragment, useState } from 'react';
 import BrightcoveEdit from './BrightcoveEdit';
 import BrightcovePreview from './BrightcovePreview';
-import { pencil } from '@wordpress/icons';
+import { Icon, pencil } from '@wordpress/icons';
 import { BlockControls } from '@wordpress/block-editor';
 import { Button, ToolbarGroup } from '@wordpress/components';
 import './style.scss';
@@ -38,7 +38,7 @@ const BrightcoveBlock = ({props}) => {
   
     if(isEditingUrl || !hasPreview){
         return (
-            <BrightcoveEdit props={props}></BrightcoveEdit>
+            <BrightcoveEdit props={props} onEditingCompleteHandler={evnt => setIsEditingUrl(false)}></BrightcoveEdit>
         );
     }
   
@@ -49,7 +49,7 @@ const BrightcoveBlock = ({props}) => {
                     <Button
                       className="components-toolbar__control"
                       label='Edit URL'
-                      icon={ pencil }
+                      icon={() => ( <Icon icon={pencil} /> )}
                       onClick={ evnt => setIsEditingUrl(true) } />
                 </ToolbarGroup>
             </BlockControls>

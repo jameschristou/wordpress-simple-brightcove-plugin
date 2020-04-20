@@ -1,14 +1,14 @@
 import { Button, Placeholder } from '@wordpress/components';
 import { useState } from 'react';
 
-const BrightcoveEdit = ({props}) => {
+const BrightcoveEdit = ({props, onEditingCompleteHandler}) => {
   const {attributes, className, setAttributes} = props;
   const [videoId, setVideoId] = useState(attributes.videoId);
 
   return (
     <Placeholder
         label="Brightcove Video Embed"
-        className="wp-block-embed"
+        className="wp-block-embed simple-brightcove-edit"
         instructions="Enter the Brightcove VideoId or ReferenceId"
     >
       <form onSubmit={evnt => {
@@ -25,6 +25,9 @@ const BrightcoveEdit = ({props}) => {
           />
           <Button isSecondary type="submit">Embed</Button>
       </form>
+      <div className="cancel">
+        <Button className="cancel__button" isLink onClick={evnt => onEditingCompleteHandler()}>Cancel</Button>
+      </div>
     </Placeholder>
   );
 }
