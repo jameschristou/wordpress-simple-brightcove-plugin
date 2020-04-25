@@ -14,6 +14,7 @@ const BrightcoveEdit = ({props, onEditingCompleteHandler}) => {
       <form onSubmit={evnt => {
         evnt.preventDefault();
         setAttributes({videoId: videoId});
+        onEditingCompleteHandler();
         }}>
           <input
               type="text"

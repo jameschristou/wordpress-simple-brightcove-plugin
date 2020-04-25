@@ -38,7 +38,7 @@ const BrightcoveBlock = ({props}) => {
   
     if(isEditingUrl || !hasPreview){
         return (
-            <BrightcoveEdit props={props} onEditingCompleteHandler={evnt => setIsEditingUrl(false)}></BrightcoveEdit>
+            <BrightcoveEdit props={props} onEditingCompleteHandler={() => setIsEditingUrl(false)}></BrightcoveEdit>
         );
     }
   
@@ -50,7 +50,7 @@ const BrightcoveBlock = ({props}) => {
                       className="components-toolbar__control"
                       label='Edit URL'
                       icon={() => ( <Icon icon={pencil} /> )}
-                      onClick={ evnt => setIsEditingUrl(true) } />
+                      onClick={() => setIsEditingUrl(true)} />
                 </ToolbarGroup>
             </BlockControls>
             <BrightcovePreview props={props}></BrightcovePreview>
