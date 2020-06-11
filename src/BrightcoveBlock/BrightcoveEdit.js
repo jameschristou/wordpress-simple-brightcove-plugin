@@ -9,7 +9,7 @@ const BrightcoveEdit = ({props, onEditingCompleteHandler}) => {
     <Placeholder
         label="Brightcove Video Embed"
         className="wp-block-embed simple-brightcove-edit"
-        instructions="Enter the Brightcove VideoId or ReferenceId"
+        instructions="Enter the Brightcove VideoId"
     >
       <form onSubmit={evnt => {
         evnt.preventDefault();
@@ -21,7 +21,7 @@ const BrightcoveEdit = ({props, onEditingCompleteHandler}) => {
               value={ videoId || '' }
               className="components-placeholder__input"
               aria-label="Brightcove VideoId"
-              placeholder="Enter the VideoId or ReferenceId here"
+              placeholder="Enter the VideoId here"
               onChange={evnt => setVideoId(evnt.target.value)}
           />
           <Button isSecondary type="submit">Embed</Button>

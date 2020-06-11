@@ -3,12 +3,18 @@
 namespace simpleBrightcove;
 
 class ConfigManager{
+    private $config;
+
     public function __construct() {
         add_action('admin_head', array($this, 'initJsConfig'), 100);
     }
 
-    private function getConfig(){
-        return apply_filters('simple_brightcove_config', new Config());
+    public function getConfig(){
+        if(!empty($this->config)) return $this->config;
+
+        $this->config = apply_filters('simple_brightcove_config', new Config());
+
+        return $this->config;
     }
 
     public function initJsConfig()

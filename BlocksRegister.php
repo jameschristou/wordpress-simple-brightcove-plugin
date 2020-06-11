@@ -2,8 +2,14 @@
 
 namespace simpleBrightcove;
 
+require_once 'ConfigManager.php';
+
 class BlocksRegister{
+    private static $configManager;
+
     static public function registerBlocks(){
+        self::$configManager = new ConfigManager();
+
         if ( ! function_exists( 'register_block_type' ) ) {
             // Gutenberg is not active.
             return;
@@ -33,6 +39,19 @@ class BlocksRegister{
     }
 
     static public function render($attributes, $content){
-        return '<div><h2>Brightcove Test</h2></div>';
+        $config = self::$configManager->getConfig();
+
+        return "
+        <div class='brightcove-embedded-video'>
+            <video
+                data-video-id='{$attributes['videoId']}'
+                data-account='{$config->accountId}'
+                data-player='{$config->playerId}'
+                data-embed='default'
+                class='video-js'
+                controls>
+            </video>
+            <script src='https://players.brightcove.net/{$config->accountId}/{$config->playerId}_default/index.js' async></script>
+        </div>";
     }
 }

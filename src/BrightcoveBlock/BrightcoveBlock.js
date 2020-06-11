@@ -1,5 +1,5 @@
 import { registerBlockType } from '@wordpress/blocks';
-import { Fragment, useState } from 'react';
+import { Fragment, useState, useEffect } from 'react';
 import BrightcoveEdit from './BrightcoveEdit';
 import BrightcovePreview from './BrightcovePreview';
 import { Icon, pencil } from '@wordpress/icons';
@@ -34,14 +34,31 @@ registerBlockType( 'simple-brightcove/brightcove-block', {
 
 const BrightcoveBlock = ({props}) => {
     const [isEditingUrl, setIsEditingUrl] = useState(false);
+    const [isInteractive, setIsInteractive] = useState(false);
+
+    useEffect(() => {
+        if(!props.isSelected){
+            setIsInteractive(false);
+        }
+    }, [props.isSelected]);
+
     var hasPreview = props.attributes.videoId != '';
+
+    const hideOverlay = () => {
+		// This is called onMouseUp on the overlay. We can't respond to the `isSelected` prop
+		// changing, because that happens on mouse down, and the overlay immediately disappears,
+		// and the mouse event can end up in the preview content. We can't use onClick on
+		// the overlay to hide it either, because then the editor misses the mouseup event, and
+        // thinks we're multi-selecting blocks.
+		setIsInteractive(true);
+	}
   
     if(isEditingUrl || !hasPreview){
         return (
             <BrightcoveEdit props={props} onEditingCompleteHandler={() => setIsEditingUrl(false)}></BrightcoveEdit>
         );
     }
-  
+
     return (
         <Fragment>
             <BlockControls>
@@ -54,6 +71,7 @@ const BrightcoveBlock = ({props}) => {
                 </ToolbarGroup>
             </BlockControls>
             <BrightcovePreview props={props}></BrightcovePreview>
+            {!isInteractive && (<div className="block-library-embed__interactive-overlay" onMouseUp={() => hideOverlay()}/>)}
         </Fragment>
     );
 }

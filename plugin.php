@@ -9,7 +9,7 @@
 namespace simpleBrightcove;
 
 require_once 'BlocksRegister.php';
-require_once 'ConfigManager.php';
+
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -34,8 +34,6 @@ class EntryPoint{
         // }
         
         BlocksRegister::registerBlocks();
-
-        new ConfigManager();
     }
     
     static public function activate(){
