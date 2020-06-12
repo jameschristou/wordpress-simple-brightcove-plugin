@@ -6,7 +6,7 @@ const BrightcovePreview = ({props}) => {
   useEffect(() => {
     const script = document.createElement('script');
   
-    script.src = `https://players.brightcove.net/${simpleBrightcoveConfig.accountId}/${simpleBrightcoveConfig.playerId}_default/index.js`;
+    script.src = `https://players.brightcove.net/${simpleBrightcoveConfig.accountId}/default_default/index.js`;
     script.async = true;
   
     document.body.appendChild(script);
@@ -17,7 +17,7 @@ const BrightcovePreview = ({props}) => {
       <video 
           data-video-id={`${attributes.videoId}`}
           data-account={`${simpleBrightcoveConfig.accountId}`}
-          data-player={`${simpleBrightcoveConfig.playerId}`}
+          data-player="default"
           data-embed="default"
           className="video-js brightcove-preview__video"
           controls>

@@ -1,6 +1,14 @@
-/**
- * #.# Styles
- *
- * CSS for both Frontend+Backend.
- */
+.brightcove-embedded-video-container{
+    background-color: #000;
+    position: relative;
+    height: 100%;
 
+    .brightcove-embedded-video{
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        width: 100%;
+        overflow: hidden;
+        top: 0;
+    }
+}

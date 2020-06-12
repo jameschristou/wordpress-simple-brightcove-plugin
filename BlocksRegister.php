@@ -30,6 +30,20 @@ class BlocksRegister{
             array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
             SIMPLE_BRIGHTCOVE_VERSION
         );
+
+        wp_register_style(
+            'simple-brightcove-blocks-fe-css',
+            plugins_url( 'dist/blocks.style.build.css', __FILE__ ),
+            array(),
+            SIMPLE_BRIGHTCOVE_VERSION
+        );
+
+        wp_enqueue_style(
+            'simple-brightcove-blocks-fe-css', // Handle.
+            plugins_url( 'dist/blocks.style.build.css',  __FILE__ ), // Block style CSS.
+            array(),
+            SIMPLE_BRIGHTCOVE_VERSION
+        );
      
         register_block_type('simple-brightcove/brightcove-block', array(
             'editor_script' => 'simple-brightcove-blocks-js',
@@ -42,13 +56,14 @@ class BlocksRegister{
         $config = self::$configManager->getConfig();
 
         return "
-        <div class='brightcove-embedded-video'>
+        <div class='brightcove-embedded-video-container'>
             <video
+                class='brightcove-embedded-video'
                 data-video-id='{$attributes['videoId']}'
                 data-account='{$config->accountId}'
                 data-player='{$config->playerId}'
                 data-embed='default'
-                class='video-js'
+                class='vjs-tech'
                 controls>
             </video>
             <script src='https://players.brightcove.net/{$config->accountId}/{$config->playerId}_default/index.js' async></script>

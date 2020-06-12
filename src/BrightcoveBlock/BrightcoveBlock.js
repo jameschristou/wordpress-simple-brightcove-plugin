@@ -71,7 +71,7 @@ const BrightcoveBlock = ({props}) => {
                 </ToolbarGroup>
             </BlockControls>
             <BrightcovePreview props={props}></BrightcovePreview>
-            {!isInteractive && (<div className="block-library-embed__interactive-overlay" onMouseUp={() => hideOverlay()}/>)}
+            {!isInteractive && (<div className="block-library-embed__interactive-overlay" onMouseUp={() => hideOverlay()}></div>)}
         </Fragment>
     );
 }
