@@ -42,7 +42,7 @@ const BrightcoveBlock = ({props}) => {
         }
     }, [props.isSelected]);
 
-    var hasPreview = props.attributes.videoId != '';
+    var hasPreview = props.attributes.videoId != undefined && props.attributes.videoId != '';
 
     const hideOverlay = () => {
 		// This is called onMouseUp on the overlay. We can't respond to the `isSelected` prop
