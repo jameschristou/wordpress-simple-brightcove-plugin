@@ -54,19 +54,15 @@ class BlocksRegister{
 
     static public function render($attributes, $content){
         $config = self::$configManager->getConfig();
+    
+        $iframeSrc = "https://players.brightcove.net/{$config->accountId}/default_default/index.html?videoId={$attributes['videoId']}";
 
         return "
-        <div class='brightcove-embedded-video-container'>
-            <video
-                class='brightcove-embedded-video'
-                data-video-id='{$attributes['videoId']}'
-                data-account='{$config->accountId}'
-                data-player='{$config->playerId}'
-                data-embed='default'
-                class='vjs-tech'
-                controls>
-            </video>
-            <script src='https://players.brightcove.net/{$config->accountId}/{$config->playerId}_default/index.js' async></script>
-        </div>";
+            <div id='brightcove-videoid-{rand()}' class='brightcove-container'>
+                <div class='brightcove-iframe-wrapper'>
+                    <iframe id='brightcove-iframe' src='{$iframeSrc}' allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+                </div>
+            </div>
+        ";
     }
 }
