@@ -2,14 +2,10 @@
 
 namespace simpleBrightcove;
 
-require_once 'ConfigManager.php';
+require_once 'VideoRenderer.php';
 
 class BlocksRegister{
-    private static $configManager;
-
     static public function registerBlocks(){
-        self::$configManager = new ConfigManager();
-
         if ( ! function_exists( 'register_block_type' ) ) {
             // Gutenberg is not active.
             return;
@@ -48,21 +44,7 @@ class BlocksRegister{
         register_block_type('simple-brightcove/brightcove-block', array(
             'editor_script' => 'simple-brightcove-blocks-js',
             'editor_style' => 'simple-brightcove-blocks-css',
-            'render_callback' => '\simpleBrightcove\BlocksRegister::render'
+            'render_callback' => '\simpleBrightcove\VideoRenderer::render'
         ) );
-    }
-
-    static public function render($attributes, $content){
-        $config = self::$configManager->getConfig();
-    
-        $iframeSrc = "https://players.brightcove.net/{$config->accountId}/default_default/index.html?videoId={$attributes['videoId']}";
-
-        return "
-            <div id='brightcove-videoid-{rand()}' class='brightcove-container'>
-                <div class='brightcove-iframe-wrapper'>
-                    <iframe id='brightcove-iframe' src='{$iframeSrc}' allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
-                </div>
-            </div>
-        ";
     }
 }

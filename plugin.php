@@ -3,13 +3,14 @@
 /*
  Plugin Name: Simple Brightcove
  Description: Provides simple blocks for embedding brightcove videos
- Version: 0.0.1
+ Version: 0.0.2
  */
 
 namespace simpleBrightcove;
 
 require_once 'BlocksRegister.php';
-
+require_once 'VideoRenderer.php';
+require_once 'ConfigManager.php';
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -32,7 +33,10 @@ class EntryPoint{
         //     // only load this stuff if the user is on the admin pages
         //     return;
         // }
+
+        $configManager = new ConfigManager();
         
+        VideoRenderer::init($configManager);
         BlocksRegister::registerBlocks();
     }
     
